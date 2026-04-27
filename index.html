@@ -7,7 +7,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-/* ... [All your original CSS remains exactly the same] ... */
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
   --ink:#1a1a1a;--ink2:#555;--ink3:#888;
@@ -96,18 +95,22 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:1.1rem
 .people-section{padding:0 2.5rem 3rem;max-width:1100px;margin:0 auto}
 .subsection-label{font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink3);margin:2rem 0 1rem;font-family:'DM Mono',monospace;border-left:2px solid var(--accent);padding-left:0.7rem}
 .people-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
-.pcard{border:0.5px solid var(--paper3);border-radius:6px;background:var(--paper);transition:all 0.2s;cursor:pointer;overflow:hidden}
+.pcard{border:0.5px solid var(--paper3);border-radius:6px;background:var(--paper);transition:all 0.2s;cursor:pointer;overflow:hidden;display:flex;flex-direction:column}
 .pcard:hover{background:white;border-color:var(--accent);transform:translateY(-2px)}
-.pcard-avatar-wrap{width:100%;height:110px;display:flex;align-items:center;justify-content:center;position:relative}
+.pcard-avatar-wrap{width:100%;height:110px;display:flex;align-items:center;justify-content:center;position:relative;flex-shrink:0}
 .pcard-initials{width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'DM Serif Display',serif;font-size:1.15rem;border:2px solid white;position:absolute}
-.pcard-body{padding:0.85rem 0.9rem 1rem;text-align:center}
+.pcard-body{padding:0.85rem 0.9rem 1rem;text-align:center;display:flex;flex-direction:column;flex-grow:1}
 .pname{font-size:0.85rem;font-weight:500;margin-bottom:0.2rem}
-.prole{font-size:0.67rem;color:var(--ink3);font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.55rem}
-.pemail{display:flex;align-items:center;justify-content:center;gap:0.3rem;font-size:0.68rem;color:var(--accent);font-family:'DM Mono',monospace}
-.pemail a{color:var(--accent)}
+.prole{font-size:0.65rem;color:var(--ink3);font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.55rem}
+
+/* NEW: People Descriptions & Socials */
+.pdesc {font-size:0.72rem; color:var(--ink2); line-height:1.45; margin-bottom:0.85rem; font-weight:300; flex-grow:1;}
+.psocials {display:flex; align-items:center; justify-content:center; gap:0.85rem; margin-top:auto; padding-top:0.65rem; border-top:0.5px solid var(--paper2);}
+.psocials a {color:var(--ink3); transition:color 0.2s; display:flex; align-items:center;}
+.psocials a:hover {color:var(--accent);}
 
 /* PI CARD */
-.pi-card{display:flex;gap:0;border:0.5px solid var(--paper3);border-radius:6px;background:var(--paper);overflow:hidden;max-width:620px;transition:all 0.2s}
+.pi-card{display:flex;gap:0;border:0.5px solid var(--paper3);border-radius:6px;background:var(--paper);overflow:hidden;max-width:680px;transition:all 0.2s}
 .pi-card:hover{background:white;border-color:var(--accent)}
 .pi-img-wrap{width:160px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:var(--accent-light)}
 .pi-initials{font-family:'DM Serif Display',serif;font-size:2.5rem;color:var(--accent)}
@@ -115,8 +118,9 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:1.1rem
 .pi-name{font-size:1.05rem;font-weight:500;margin-bottom:0.2rem}
 .pi-role{font-size:0.7rem;color:var(--ink3);font-family:'DM Mono',monospace;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.7rem}
 .pi-bio{font-size:0.82rem;color:var(--ink2);line-height:1.65;font-weight:300;margin-bottom:0.85rem}
-.pi-email{display:flex;align-items:center;gap:0.3rem;font-size:0.75rem;color:var(--accent);font-family:'DM Mono',monospace}
-.pi-email a{color:var(--accent)}
+.pi-socials {display:flex; align-items:center; gap:0.85rem;}
+.pi-socials a {color:var(--accent); transition:opacity 0.2s; display:flex;}
+.pi-socials a:hover {opacity:0.7;}
 
 /* PUBLICATIONS */
 .pub-filters{display:flex;gap:0.45rem;padding:0 2.5rem 1.4rem;max-width:1100px;margin:0 auto;flex-wrap:wrap}
@@ -290,132 +294,108 @@ footer{background:var(--ink);color:white;padding:2.5rem 2.5rem;display:grid;grid
 <div id="page-people" class="page">
   <div class="page-hero">
     <h2>The Team</h2>
-    <p>18 researchers spanning computational biology, machine learning, biophysics, and wet-lab experimentation.</p>
+    <p>Researchers spanning computational biology, machine learning, biophysics, and wet-lab experimentation.</p>
   </div>
   <div class="people-section">
     <div class="subsection-label">Principal Investigator</div>
     <div class="pi-card">
       <div class="pi-img-wrap">
-        <div class="pi-initials">DV</div>
+        <div class="pi-initials">EMB</div>
       </div>
       <div class="pi-body">
-        <div class="pi-name">Dr. Diana Voss</div>
+        <div class="pi-name">Dr. Enrique Martín Blanco</div>
         <div class="pi-role">Director · Principal Investigator</div>
-        <div class="pi-bio">PhD MIT 2014. ERC Consolidator Grantee 2025. Research interests: gene regulation, information theory in biology, and ML for molecular design. Named to MIT Technology Review Innovators Under 40.</div>
-        <div class="pi-email">
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="13" height="13"><rect x="2" y="4" width="12" height="9" rx="1"/><path d="M2 4l6 5 6-5"/></svg>
-          <a href="mailto:d.voss@nexuslab.es">d.voss@nexuslab.es</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="subsection-label">Postdoctoral Researchers</div>
-    <div class="people-grid">
-      <div class="pcard">
-        <div class="pcard-avatar-wrap" style="background:#E8F5F0">
-          <div class="pcard-initials" style="background:var(--accent-light);color:var(--accent)">JC</div>
-        </div>
-        <div class="pcard-body">
-          <div class="pname">Jin Chen</div>
-          <div class="prole">Postdoc · Genomics</div>
-          <div class="pemail">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="11" height="11"><rect x="2" y="4" width="12" height="9" rx="1"/><path d="M2 4l6 5 6-5"/></svg>
-            <a href="mailto:j.chen@nexuslab.es">j.chen@nexuslab.es</a>
-          </div>
-        </div>
-      </div>
-      <div class="pcard">
-        <div class="pcard-avatar-wrap" style="background:#EAE9F8">
-          <div class="pcard-initials" style="background:var(--purple-light);color:var(--purple)">MN</div>
-        </div>
-        <div class="pcard-body">
-          <div class="pname">Mei Nakamura</div>
-          <div class="prole">Postdoc · ML Models</div>
-          <div class="pemail">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="11" height="11"><rect x="2" y="4" width="12" height="9" rx="1"/><path d="M2 4l6 5 6-5"/></svg>
-            <a href="mailto:m.nakamura@nexuslab.es">m.nakamura@nexuslab.es</a>
-          </div>
-        </div>
-      </div>
-      <div class="pcard">
-        <div class="pcard-avatar-wrap" style="background:#EAF2FB">
-          <div class="pcard-initials" style="background:var(--blue-light);color:var(--blue)">AO</div>
-        </div>
-        <div class="pcard-body">
-          <div class="pname">Amara Okafor</div>
-          <div class="prole">Postdoc · Genomics</div>
-          <div class="pemail">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="11" height="11"><rect x="2" y="4" width="12" height="9" rx="1"/><path d="M2 4l6 5 6-5"/></svg>
-            <a href="mailto:a.okafor@nexuslab.es">a.okafor@nexuslab.es</a>
-          </div>
-        </div>
-      </div>
-      <div class="pcard">
-        <div class="pcard-avatar-wrap" style="background:#F7EDE8">
-          <div class="pcard-initials" style="background:var(--coral-light);color:var(--coral)">SP</div>
-        </div>
-        <div class="pcard-body">
-          <div class="pname">Sora Park</div>
-          <div class="prole">Postdoc · Evolution</div>
-          <div class="pemail">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="11" height="11"><rect x="2" y="4" width="12" height="9" rx="1"/><path d="M2 4l6 5 6-5"/></svg>
-            <a href="mailto:s.park@nexuslab.es">s.park@nexuslab.es</a>
-          </div>
+        <div class="pi-bio">Affiliated with the Centro de Neurociencias Cajal (CSIC) in Alcalá de Henares. Research primarily focuses on the mechanics of morphogenesis within the Drosophila nervous system, exploring the intersections of mechanobiology, cell signaling, and cytoskeletal dynamics.</div>
+        <div class="pi-socials">
+          <a href="mailto:embbmc@ibmb.csic.es" aria-label="Email" title="Email">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="15" height="15"><rect x="2" y="4" width="12" height="9" rx="1"/><path d="M2 4l6 5 6-5"/></svg>
+          </a>
         </div>
       </div>
     </div>
 
     <div class="subsection-label">PhD Students</div>
     <div class="people-grid">
-      <div class="pcard">
-        <div class="pcard-avatar-wrap" style="background:#F7EDE8">
-          <div class="pcard-initials" style="background:var(--coral-light);color:var(--coral)">FS</div>
-        </div>
-        <div class="pcard-body">
-          <div class="pname">Felipe Soto</div>
-          <div class="prole">PhD · Proteins</div>
-          <div class="pemail">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="11" height="11"><rect x="2" y="4" width="12" height="9" rx="1"/><path d="M2 4l6 5 6-5"/></svg>
-            <a href="mailto:f.soto@nexuslab.es">f.soto@nexuslab.es</a>
-          </div>
-        </div>
-      </div>
+      
       <div class="pcard">
         <div class="pcard-avatar-wrap" style="background:#EAF2FB">
-          <div class="pcard-initials" style="background:var(--blue-light);color:var(--blue)">RA</div>
+          <div class="pcard-initials" style="background:var(--blue-light);color:var(--blue)">D</div>
         </div>
         <div class="pcard-body">
-          <div class="pname">Rania Al-Rashid</div>
-          <div class="prole">PhD · Syn. Biology</div>
-          <div class="pemail">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="11" height="11"><rect x="2" y="4" width="12" height="9" rx="1"/><path d="M2 4l6 5 6-5"/></svg>
-            <a href="mailto:r.alrashid@nexuslab.es">r.alrashid@nexuslab.es</a>
+          <div class="pname">Daniel</div>
+          <div class="prole">PhD Student</div>
+          <div class="pdesc">Specific description will go here.</div>
+          <div class="psocials">
+            <a href="mailto:#" title="Email"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><rect x="2" y="4" width="12" height="9" rx="1"/><path d="M2 4l6 5 6-5"/></svg></a>
+            <a href="#" title="X (Twitter)"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+            <a href="#" title="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
           </div>
         </div>
       </div>
+
       <div class="pcard">
         <div class="pcard-avatar-wrap" style="background:#EAE9F8">
-          <div class="pcard-initials" style="background:var(--purple-light);color:var(--purple)">CL</div>
+          <div class="pcard-initials" style="background:var(--purple-light);color:var(--purple)">D</div>
         </div>
         <div class="pcard-body">
-          <div class="pname">Camila Linde</div>
-          <div class="prole">PhD · Genomics</div>
-          <div class="pemail">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="11" height="11"><rect x="2" y="4" width="12" height="9" rx="1"/><path d="M2 4l6 5 6-5"/></svg>
-            <a href="mailto:c.linde@nexuslab.es">c.linde@nexuslab.es</a>
+          <div class="pname">Duarte</div>
+          <div class="prole">PhD Student</div>
+          <div class="pdesc">Specific description will go here.</div>
+          <div class="psocials">
+            <a href="mailto:#" title="Email"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><rect x="2" y="4" width="12" height="9" rx="1"/><path d="M2 4l6 5 6-5"/></svg></a>
+            <a href="#" title="X (Twitter)"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+            <a href="#" title="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
           </div>
         </div>
       </div>
+
       <div class="pcard">
         <div class="pcard-avatar-wrap" style="background:#E8F5F0">
-          <div class="pcard-initials" style="background:var(--accent-light);color:var(--accent)">TF</div>
+          <div class="pcard-initials" style="background:var(--accent-light);color:var(--accent)">PB</div>
         </div>
         <div class="pcard-body">
-          <div class="pname">Tomás Ferreira</div>
-          <div class="prole">PhD · Syn. Biology</div>
-          <div class="pemail">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="11" height="11"><rect x="2" y="4" width="12" height="9" rx="1"/><path d="M2 4l6 5 6-5"/></svg>
-            <a href="mailto:t.ferreira@nexuslab.es">t.ferreira@nexuslab.es</a>
+          <div class="pname">Pallav Baraya</div>
+          <div class="prole">PhD Student</div>
+          <div class="pdesc">Specific description will go here.</div>
+          <div class="psocials">
+            <a href="mailto:#" title="Email"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><rect x="2" y="4" width="12" height="9" rx="1"/><path d="M2 4l6 5 6-5"/></svg></a>
+            <a href="#" title="X (Twitter)"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+            <a href="#" title="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pcard">
+        <div class="pcard-avatar-wrap" style="background:#F7EDE8">
+          <div class="pcard-initials" style="background:var(--coral-light);color:var(--coral)">S</div>
+        </div>
+        <div class="pcard-body">
+          <div class="pname">Sindra</div>
+          <div class="prole">PhD Student</div>
+          <div class="pdesc">Specific description will go here.</div>
+          <div class="psocials">
+            <a href="mailto:#" title="Email"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><rect x="2" y="4" width="12" height="9" rx="1"/><path d="M2 4l6 5 6-5"/></svg></a>
+            <a href="#" title="X (Twitter)"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+            <a href="#" title="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="subsection-label">Lab Technician</div>
+    <div class="people-grid" style="grid-template-columns: repeat(4, 1fr);">
+      <div class="pcard">
+        <div class="pcard-avatar-wrap" style="background:#f2f0eb">
+          <div class="pcard-initials" style="background:white;color:var(--ink2)">A</div>
+        </div>
+        <div class="pcard-body">
+          <div class="pname">Andrea</div>
+          <div class="prole">Lab Technician</div>
+          <div class="pdesc">Specific description will go here.</div>
+          <div class="psocials">
+            <a href="mailto:#" title="Email"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><rect x="2" y="4" width="12" height="9" rx="1"/><path d="M2 4l6 5 6-5"/></svg></a>
+            <a href="#" title="X (Twitter)"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+            <a href="#" title="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
           </div>
         </div>
       </div>
@@ -604,8 +584,6 @@ function filterPubs(btn, cat) {
     item.style.display = (cat === 'all' || item.dataset.cat === cat) ? 'grid' : 'none';
   });
 }
-
-// Form submission logic is now handled natively by the Formspree <form> tag above.
 </script>
 
 </body>
